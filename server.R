@@ -211,7 +211,7 @@ shinyServer(function(input, output) {
   ###"Salmon", "salmon", "Shrimp", "shrimp","Tuna","tuna",
   ###"Milk", "milk","Yogurt","yogurt", "Flour","flour","Rice","rice",
   ###"Broccoli", "broccoli","Cabbage", "cabbage", "Carrots", "carrots","Lettuce","lettuce", "Potatoes", "potatoes", "Tomatoes", "tomatoes",
-  ###"Dry Bean", "dry bean", "Dry bean","Tofu", "tofu", 
+  ###"Dry Bean", "dry bean", "Dry bean","Tofu", "tofu",  
   ###"Oranges", "oranges","Peaches", "peaches", "Strawberries", "strawberries", "Apples", "apples", "Bananas", "bananas","Grapes", "grapes",
   ###"Butter", "butter", "Vegetable Oils", "Vegetable oils", "vegetable oils",
   ###"Meat", "Poultry", "Meat and Poultry", "Meat & Poultry", "meat", "poultry",
@@ -241,11 +241,11 @@ shinyServer(function(input, output) {
         return(invisible())
       }
       return(round(productionCost,2))
-    } else if (!any(Type == c("nuts", "Nuts", "Beef", "beef", "Chicken", "chicken", "Eggs", "eggs", "Pork", "pork", "Turkey", "turkey",
-                              "Salmon", "salmon", "Shrimp", "shrimp","Tuna","tuna",
+    } else if (!any(Type == c("nuts", "Nuts", "Beef", "beef", "Chicken", "chicken", "Eggs", "eggs", "Pork", "pork", "Turkey", "turkey", "Sugar",
+                              "Salmon", "salmon", "Shrimp", "shrimp","Tuna","tuna", "Dry Beans",
                               "Milk", "milk","Yogurt","yogurt", "Flour","flour","Rice","rice", "Vegetables", "vegetables",
                               "Broccoli", "broccoli","Cabbage", "cabbage", "Carrots", "carrots","Lettuce","lettuce", "Potatoes", "potatoes", "Tomatoes", "tomatoes",
-                              "Dry Beans", "dry beans", "Dry beans","Tofu", "tofu", 
+                              "Dry Beans", "dry beans", "Dry beans","Tofu", "tofu", "Fruits",
                               "Oranges", "oranges","Peaches", "peaches", "Strawberries", "strawberries", "Apples", "apples", "Bananas", "bananas","Grapes", "grapes",
                               "Butter", "butter", "Vegetable Oils", "Vegetable oils", "vegetable oils",
                               "Meat", "Poultry", "Meat and Poultry", "Meat & Poultry", "meat", "poultry",
@@ -299,7 +299,7 @@ shinyServer(function(input, output) {
         return(invisible())
       }
       return(round(Vegetables.emissions(x),2))
-    } else if(Type == "Beans" | Type == "Pulses" | Type == "Beans & Pulses" | Type == "Beans and Pulses" | Type == "beans" | Type == "pulses" | Type == "beans and pulses" | Type == "beans & pulses" | Type == "nuts" | Type == "Nuts") {
+    } else if(Type == "Beans" | Type == "Pulses" | Type == "Beans & Pulses" | Type == "Dry Beans" | Type == "Beans and Pulses" | Type == "beans" | Type == "pulses" | Type == "beans and pulses" | Type == "beans & pulses" | Type == "nuts" | Type == "Nuts") {
       if (compare) {
         print(paste(x, "lbs of", Type, "is equivalent to driving", round(BeanPulses.emissions(x)*1000/emission.car, 2), "miles on an average vehicle"))
         return(invisible())
@@ -391,11 +391,11 @@ shinyServer(function(input, output) {
   waterFootprint = function (poundsOfFood = 0, Type = "") { #returns liters of water used
     if (Type == "") {
       return(sum(Weights*poundsOfFood*WFootprint))
-    } else if (!any(Type == c("nuts", "Nuts", "Beef", "beef", "Chicken", "chicken", "Eggs", "eggs", "Pork", "pork", "Turkey", "turkey",
-                              "Salmon", "salmon", "Shrimp", "shrimp","Tuna","tuna",
+    } else if (!any(Type == c("nuts", "Nuts", "Beef", "beef", "Chicken", "chicken", "Eggs", "eggs", "Pork", "pork", "Turkey", "turkey", "Sugar",
+                              "Salmon", "salmon", "Shrimp", "shrimp","Tuna","tuna", "Dry Beans",
                               "Milk", "milk","Yogurt","yogurt", "Flour","flour","Rice","rice", "Vegetables", "vegetables",
                               "Broccoli", "broccoli","Cabbage", "cabbage", "Carrots", "carrots","Lettuce","lettuce", "Potatoes", "potatoes", "Tomatoes", "tomatoes",
-                              "Dry Beans", "dry beans", "Dry beans","Tofu", "tofu", 
+                              "Dry Beans", "dry beans", "Dry beans","Tofu", "tofu", "Fruits",
                               "Oranges", "oranges","Peaches", "peaches", "Strawberries", "strawberries", "Apples", "apples", "Bananas", "bananas","Grapes", "grapes",
                               "Butter", "butter", "Vegetable Oils", "Vegetable oils", "vegetable oils",
                               "Meat", "Poultry", "Meat and Poultry", "Meat & Poultry", "meat", "poultry",
