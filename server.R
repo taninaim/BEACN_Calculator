@@ -201,6 +201,10 @@ shinyServer(function(input, output) {
     return(x*2204.62)
   }
   
+  ##Insert Commas between thousands
+  
+ 
+  
   ##Calculator
   ###HOW TO USE###
   ###The output is either a comparison statement or an amount of KgCO2e (Kilograms of Carbon Dioxide Equivalent)
@@ -237,7 +241,7 @@ shinyServer(function(input, output) {
       + dietPercentage[9] * Fruits.emissions(x)
       + dietPercentage[10] * FatsOils.emissions(x) 
       if (compare) {
-        print(paste(x, "lbs of food is equivalent to driving",  round(((productionCost*1000) / emission.car), 2), "miles on an average vehicle"))
+        print(paste(x, "lbs of food is equivalent to driving",  round(((productionCost*1000) / emission.car), 0), "miles on an average vehicle"))
         return(invisible())
       }
       return(round(productionCost,2))
@@ -259,113 +263,113 @@ shinyServer(function(input, output) {
     #case where we want to be specific less specific (e.g. Meat and Poultry, Vegetables, etc.)
     if (Type == "Meat" | Type == "Poultry" | Type == "Meat and Poultry" | Type == "Meat & Poultry" | Type == "meat" | Type == "poultry") {
       if (compare) {
-        print(paste(x, "lbs of", Type, "is equivalent to driving", round(MeatPoultry.emissions(x)*1000/emission.car, 2), "miles on an average vehicle"))
+        print(paste(x, "lbs of", Type, "is equivalent to driving", round(MeatPoultry.emissions(x)*1000/emission.car, 0), "miles on an average vehicle"))
         return(invisible())
       }
-      return(round(MeatPoultry.emissions(x), 2))
+      return(round(MeatPoultry.emissions(x), 0))
     } else if (Type == "Fish and Shellfish" | Type == "Fish & Shellfish" | Type == "Fish" | Type == "Shellfish" | Type == "fish" | Type == "shellfish") {
       if (compare) {
-        print(paste(x, "lbs of", Type, "is equivalent to driving", round(FishShellfish.emissions(x)*1000/emission.car, 2), "miles on an average vehicle"))
+        print(paste(x, "lbs of", Type, "is equivalent to driving", round(FishShellfish.emissions(x)*1000/emission.car, 0), "miles on an average vehicle"))
         return(invisible())
       }
-      return(round(FishShellfish.emissions(x),2))
+      return(round(FishShellfish.emissions(x),0))
     } else if (Type == "Cheese" | Type == "cheese") {
       if (compare) {
-        print(paste(x, "lbs of", Type, "is equivalent to driving", round(Cheese.emissions(x)*1000/emission.car, 2), "miles on an average vehicle"))
+        print(paste(x, "lbs of", Type, "is equivalent to driving", round(Cheese.emissions(x)*1000/emission.car, 0), "miles on an average vehicle"))
         return(invisible())
       }
-      return(round(Cheese.emissions(x),2))
+      return(round(Cheese.emissions(x),0))
     } else if(Type == "Dairy Products" | Type == "dairy products" | Type == "dairy") {
       if (compare) {
-        print(paste(x, "lbs of", Type, "is equivalent to driving", round(DairyProducts.emissions(x)*1000/emission.car, 2), "miles on an average vehicle"))
+        print(paste(x, "lbs of", Type, "is equivalent to driving", round(DairyProducts.emissions(x)*1000/emission.car, 0), "miles on an average vehicle"))
         return(invisible())
       }
-      return(round(DairyProducts.emissions(x),2))
+      return(round(DairyProducts.emissions(x),0))
     } else if(Type == "Flour & Cereal" | Type == "Grains" | Type == "Flour and Cereal") {
       if (compare) {
-        print(paste(x, "lbs of", Type, "is equivalent to driving", round(FlourCereal.emissions(x)*1000/emission.car, 2), "miles on an average vehicle"))
+        print(paste(x, "lbs of", Type, "is equivalent to driving", round(FlourCereal.emissions(x)*1000/emission.car, 0), "miles on an average vehicle"))
         return(invisible())
       }
-      return(round(FlourCereal.emissions(x),2))
+      return(round(FlourCereal.emissions(x),0))
     } else if(Type == "Sweetener" | Type == "Sugar" | Type == "sugar" | Type == "sweetener") {
       if (compare) {
-        print(paste(x, "lbs of", Type, "is equivalent to driving", round(Sweetener.emissions(x)*1000/emission.car, 2), "miles on an average vehicle"))
+        print(paste(x, "lbs of", Type, "is equivalent to driving", round(Sweetener.emissions(x)*1000/emission.car, 0), "miles on an average vehicle"))
         return(invisible())
       }
-      return(round(Sweetener.emissions(x),2))
+      return(round(Sweetener.emissions(x),0))
     } else if(Type == "Vegetables" | Type == "vegetables") {
       if (compare) {
-        print(paste(x, "lbs of", Type, "is equivalent to driving", round(Vegetables.emissions(x)*1000/emission.car, 2), "miles on an average vehicle"))
+        print(paste(x, "lbs of", Type, "is equivalent to driving", round(Vegetables.emissions(x)*1000/emission.car, 0), "miles on an average vehicle"))
         return(invisible())
       }
-      return(round(Vegetables.emissions(x),2))
+      return(round(Vegetables.emissions(x),0))
     } else if(Type == "Beans" | Type == "Pulses" | Type == "Beans & Pulses" | Type == "Dry Beans" | Type == "Beans and Pulses" | Type == "beans" | Type == "pulses" | Type == "beans and pulses" | Type == "beans & pulses" | Type == "nuts" | Type == "Nuts") {
       if (compare) {
-        print(paste(x, "lbs of", Type, "is equivalent to driving", round(BeanPulses.emissions(x)*1000/emission.car, 2), "miles on an average vehicle"))
+        print(paste(x, "lbs of", Type, "is equivalent to driving", round(BeanPulses.emissions(x)*1000/emission.car, 0), "miles on an average vehicle"))
         return(invisible())
       }
-      return(round(BeanPulses.emissions(x),2))
+      return(round(BeanPulses.emissions(x),0))
     } else if(Type == "Fruits") {
       if (compare) {
-        print(paste(x, "lbs of", Type, "is equivalent to driving", round(Fruits.emissions(x)*1000/emission.car, 2), "miles on an average vehicle"))
+        print(paste(x, "lbs of", Type, "is equivalent to driving", round(Fruits.emissions(x)*1000/emission.car, 0), "miles on an average vehicle"))
         return(invisible())
       }
-      return(round(Fruits.emissions(x),2))
+      return(round(Fruits.emissions(x),0))
     } else if(Type == "Fats & Oils" | Type == "Fats and Oils" | Type == "Fats" | Type == "Oils" | Type == "oils" | Type == "fats" | Type == "fats & oils" | Type == "fats and oils") {
       if (compare) {
-        print(paste(x, "lbs of", Type, "is equivalent to driving", round(FatsOils.emissions(x)*1000/emission.car, 2), "miles on an average vehicle"))
+        print(paste(x, "lbs of", Type, "is equivalent to driving", round(FatsOils.emissions(x)*1000/emission.car, 0), "miles on an average vehicle"))
         return(invisible())
       }
-      return(round(FatsOils.emissions(x),2))
+      return(round(FatsOils.emissions(x),0))
     } #case where we want to be specific (e.g. emissions from beef)
     else if(any(Type == c("Beef", "beef", "Chicken", "chicken", "Eggs", "eggs", "Pork", "pork", "Turkey", "turkey"))) {
       if (compare) {
-        print(paste(x, "lbs of", Type, "is equivalent to driving", round(MeatPoultry.emissions(x)*1000/emission.car, 2), "miles on an average vehicle"))
+        print(paste(x, "lbs of", Type, "is equivalent to driving", round(MeatPoultry.emissions(x)*1000/emission.car, 0), "miles on an average vehicle"))
         return(invisible())
       }
-      return(round(MeatPoultry.emissions(x, Type),2))
+      return(round(MeatPoultry.emissions(x, Type),0))
     } else if(any(Type == c("Salmon", "salmon", "Shrimp", "shrimp","Tuna","tuna"))) {
       if (compare) {
-        print(paste(x, "lbs of", Type, "is equivalent to driving", round(FishShellfish.emissions(x)*1000/emission.car, 2), "miles on an average vehicle"))
+        print(paste(x, "lbs of", Type, "is equivalent to driving", round(FishShellfish.emissions(x)*1000/emission.car, 0), "miles on an average vehicle"))
         return(invisible())
       }
-      return(round(FishShellfish.emissions(x, Type),2))
+      return(round(FishShellfish.emissions(x, Type),0))
     } else if(any(Type == c("Milk", "milk","Yogurt","yogurt"))) {
       if (compare) {
-        print(paste(x, "lbs of", Type, "is equivalent to driving", round(DairyProducts.emissions(x)*1000/emission.car, 2), "miles on an average vehicle"))
+        print(paste(x, "lbs of", Type, "is equivalent to driving", round(DairyProducts.emissions(x)*1000/emission.car, 0), "miles on an average vehicle"))
         return(invisible())
       }
-      return(round(DairyProducts.emissions(x, Type),2))
+      return(round(DairyProducts.emissions(x, Type),0))
     } else if(any(Type == c("Flour","flour","Rice","rice"))) {
       if (compare) {
-        print(paste(x, "lbs of", Type, "is equivalent to driving", round(FlourCereal.emissions(x)*1000/emission.car, 2), "miles on an average vehicle"))
+        print(paste(x, "lbs of", Type, "is equivalent to driving", round(FlourCereal.emissions(x)*1000/emission.car, 0), "miles on an average vehicle"))
         return(invisible())
       }
-      return(round(FlourCereal.emissions(x, Type), 2))
+      return(round(FlourCereal.emissions(x, Type), 0))
     }  else if(any(Type == c("Broccoli", "broccoli","Cabbage", "cabbage", "Carrots", "carrots","Lettuce","lettuce", "Potatoes", "potatoes", "Tomatoes", "tomatoes" ))) {
       if (compare) {
-        print(paste(x, "lbs of", Type, "is equivalent to driving", round(Vegetables.emissions(x)*1000/emission.car, 2), "miles on an average vehicle"))
+        print(paste(x, "lbs of", Type, "is equivalent to driving", round(Vegetables.emissions(x)*1000/emission.car, 0), "miles on an average vehicle"))
         return(invisible())
       }
-      return(round(Vegetables.emissions(x, Type),2))
+      return(round(Vegetables.emissions(x, Type),0))
     } else if(any(Type == c("Dry Bean", "dry bean", "Dry bean","Tofu", "tofu" ))) {
       if (compare) {
-        print(paste(x, "lbs of", Type, "is equivalent to driving", round(BeanPulses.emissions(x)*1000/emission.car, 2), "miles on an average vehicle"))
+        print(paste(x, "lbs of", Type, "is equivalent to driving", round(BeanPulses.emissions(x)*1000/emission.car, 0), "miles on an average vehicle"))
         return(invisible())
       }
-      return(round(BeanPulses.emissions(x, Type),2))
+      return(round(BeanPulses.emissions(x, Type),0))
     } else if(any(Type == c("Oranges", "oranges","Peaches", "peaches", "Strawberries", "strawberries", "Apples", "apples", "Bananas", "bananas","Grapes", "grapes"))) {
       if (compare) {
-        print(paste(x, "lbs of", Type, "is equivalent to driving", round(Fruits.emissions(x)*1000/emission.car, 2), "miles on an average vehicle"))
+        print(paste(x, "lbs of", Type, "is equivalent to driving", round(Fruits.emissions(x)*1000/emission.car, 0), "miles on an average vehicle"))
         return(invisible())
       }
-      return(round(Fruits.emissions(x, Type),2))
+      return(round(Fruits.emissions(x, Type),0))
     }  else if(any(Type == c("Butter", "butter", "Vegetable Oils", "Vegetable oils", "vegetable oils", "oils", "Oils"))) {
       if (compare) {
-        print(paste(x, "lbs of", Type, "is equivalent to driving", round(FatsOils.emissions(x)*1000/emission.car, 2), "miles on an average vehicle"))
+        print(paste(x, "lbs of", Type, "is equivalent to driving", round(FatsOils.emissions(x)*1000/emission.car, 0), "miles on an average vehicle"))
         return(invisible())
       }
-      return(round(FatsOils.emissions(x, Type),2))
+      return(round(FatsOils.emissions(x, Type),0))
     } 
   }
   
@@ -437,69 +441,69 @@ shinyServer(function(input, output) {
     averageNationCost = 2.67/1.984 #dollars per pound
     print(paste(foodToEmissions(poundsOfFood, Type = type), " KgCO2e, which translates to:", collapse = " ", sep = ""))
     print(paste("Implicit Cost (based on gasoline tax): $", x, collapse = " ", sep ="")) 
-    print(paste("Dollar Value of Food Wasted (based on meal cost in CA): $", round(poundsOfFood * averageCACost, 2), collapse = " ", sep = ""))
-    print(paste("Dollar Value of Food Wasted (based on nationwide meal cost): $", round(poundsOfFood * averageNationCost, 2), collapse = " ", sep = ""))
-    print(paste("This much food used up", round(waterFootprint(poundsOfFood, Type = type),2), "liters of water in the production."))
+    print(paste("Dollar Value of Food Wasted (based on meal cost in CA): $", round(poundsOfFood * averageCACost, 0), collapse = " ", sep = ""))
+    print(paste("Dollar Value of Food Wasted (based on nationwide meal cost): $", round(poundsOfFood * averageNationCost, 0), collapse = " ", sep = ""))
+    print(paste("This much food used up", round(waterFootprint(poundsOfFood, Type = type),0), "liters of water in the production."))
     foodToEmissions(poundsOfFood, Type = type, compare = TRUE)
   }
    
   output$text1 = renderText({
     if (input$Specific == TRUE) { 
-      paste(foodToEmissions(input$poundsOfFood, Type = input$Type1), " KgCO2e, which translates to:")
+      paste(prettyNum(round(foodToEmissions(input$poundsOfFood, Type = input$Type1),0), big.mark=",", scientific = F), " KgCO2e, which translates to:")
   } else if (input$General == TRUE) {
-      paste(foodToEmissions(input$poundsOfFood, Type = input$Type), " KgCO2e, which translates to:")
+      paste(prettyNum(round(foodToEmissions(input$poundsOfFood, Type = input$Type),0), big.mark =",", scientific=F), " KgCO2e, which translates to:")
   } else {
-    paste(foodToEmissions(input$poundsOfFood, Type = ""), " KgCO2e, which translates to:")
+    paste(prettyNum(round(foodToEmissions(input$poundsOfFood, Type = ""),0), big.mark=",", scientific=F), " KgCO2e, which translates to:")
   }
 })
 
   output$text2 = renderText ({
     if (input$Specific == TRUE){
-      print(paste("Implicit Cost (based on gasoline tax): $", round(foodToEmissions(input$poundsOfFood, Type = input$Type1)/ 2.35 * 0.028,2), collapse = " ", sep =""))  
+      print(paste("Implicit Cost (based on gasoline tax): $", prettyNum(round(foodToEmissions(input$poundsOfFood, Type = input$Type1)/ 2.35 * 0.028,0),big.mark = ",", scientific=F), collapse = " ", sep =""))  
     } else if (input$General == TRUE) {
-      print(paste("Implicit Cost (based on gasoline tax): $", round(foodToEmissions(input$poundsOfFood, Type = input$Type)/ 2.35 * 0.028,2), collapse = " ", sep ="")) 
+      print(paste("Implicit Cost (based on gasoline tax): $", prettyNum(round(foodToEmissions(input$poundsOfFood, Type = input$Type)/ 2.35 * 0.028,0),big.mark=",", scientific=F), collapse = " ", sep ="")) 
     } else {
-      print(paste("Implicit Cost (based on gasoline tax): $", round(foodToEmissions(input$poundsOfFood, Type = "")/ 2.35 * 0.028,2) , collapse = " ", sep =""))
+      print(paste("Implicit Cost (based on gasoline tax): $", prettyNum(round(foodToEmissions(input$poundsOfFood, Type = "")/ 2.35 * 0.028,0),big.mark=",", scientific=F) , collapse = " ", sep =""))
     } 
   })
 
   output$text3 = renderText ({
     averageCACost = 2.73/1.984 #dollars per pound 
-      print(paste("Dollar Value of Food Wasted (based on meal cost in CA): $", round(input$poundsOfFood * averageCACost, 2), collapse = " ", sep = ""))
+      print(paste("Dollar Value of Food Wasted (based on meal cost in CA): $", prettyNum(round(input$poundsOfFood * averageCACost, 0),big.mark=",",scientific=F), collapse = " ", sep = ""))
   })
 
   output$text4 = renderText ({
     averageNationCost = 2.67/1.984 #dollars per pound
-    print(paste("Dollar Value of Food Wasted (based on nationwide meal cost): $", round(input$poundsOfFood * averageNationCost, 2), collapse = " ", sep = ""))
+    print(paste("Dollar Value of Food Wasted (based on nationwide meal cost): $", prettyNum(round(input$poundsOfFood * averageNationCost, 0),big.mark=",", scientific=F), collapse = " ", sep = ""))
   })
 
   output$text5 = renderText ({
     if (input$Specific == TRUE) {
-      print(paste("This much food used up", round(waterFootprint(input$poundsOfFood, Type = input$Type1),2), "liters of water in the production."))
+      print(paste("This much food used up", prettyNum(round(waterFootprint(input$poundsOfFood, Type = input$Type1),0),big.mark=",",scientific=F), "liters of water in the production."))
       } else if (input$General == TRUE) {
-      print(paste("This much food used up", round(waterFootprint(input$poundsOfFood, Type = input$Type),2), "liters of water in the production."))
+      print(paste("This much food used up", prettyNum(round(waterFootprint(input$poundsOfFood, Type = input$Type),0),big.mark=",",scientific=F), "liters of water in the production."))
     } else {
-      print(paste("This much food used up", round(waterFootprint(input$poundsOfFood, Type = ""),2), "liters of water in the production."))
+      print(paste("This much food used up", prettyNum(round(waterFootprint(input$poundsOfFood, Type = ""),0),big.mark=",", scientific=F), "liters of water in the production."))
     }
   })
 
   output$text6 = renderText({
     if (input$Specific == TRUE) {
-      print(paste("The water footprint of ",  input$poundsOfFood, " lb food waste is", round(waterFootprint(input$poundsOfFood, Type = input$Type1)/2500000 ,2),  "Olympic sized swimming pool."))
+      print(paste("The water footprint of ",  prettyNum(input$poundsOfFood,big.mark=",",scientific=F), " lb food waste is", prettyNum(round(waterFootprint(input$poundsOfFood, Type = input$Type1)/2500000 ,0),big.mark=",",scientific=F),  "Olympic sized swimming pool."))
     } else if (input$General == TRUE) {
-      print(paste("The water footprint of ",  input$poundsOfFood, " lb food waste is", round(waterFootprint(input$poundsOfFood, Type = input$Type)/2500000 ,2),  "Olympic sized swimming pool."))    
+      print(paste("The water footprint of ",  prettyNum(input$poundsOfFood,big.mark=",",scientific=F), " lb food waste is", prettyNum(round(waterFootprint(input$poundsOfFood, Type = input$Type)/2500000 ,0),big.mark=",",scientific=F),  "Olympic sized swimming pool."))    
       } else {
-        print(paste("The water footprint of ",  input$poundsOfFood, " lb food waste is", round(waterFootprint(input$poundsOfFood, Type = input$Type1)/2500000 ,2),  "Olympic sized swimming pool."))    
+        print(paste("The water footprint of ",  prettyNum(input$poundsOfFood,big.mark=",", scientific=F), " lb food waste is", prettyNum(round(waterFootprint(input$poundsOfFood, Type = input$Type1)/2500000 ,0),big.mark=",", scientific=F),  "Olympic sized swimming pool."))    
       }
   })
 
   output$text7 = renderText ({
     if (input$Specific == TRUE) {
-      paste("The carbon footprint of", input$poundsOfFood, "lb of", input$Type1, "is equivalent to driving", round(foodToEmissions(input$poundsOfFood, input$Type1)*1000/emission.car,2), "miles on an average vehicle")
+      paste("The carbon footprint of", prettyNum(input$poundsOfFood,big.mark=",",scientific=F), "lb of", input$Type1, "is equivalent to driving", prettyNum(round(foodToEmissions(input$poundsOfFood, input$Type1)*1000/emission.car,0),big.mark=",",scientific=F), "miles on an average vehicle")
     } else if (input$General == TRUE) {
-      paste("The carbon footprint of", input$poundsOfFood, "lb of", input$Type, "is equivalent to driving", round(foodToEmissions(input$poundsOfFood, input$Type)*1000/emission.car,2), "miles on an average vehicle")
+      paste("The carbon footprint of", prettyNum(input$poundsOfFood,big.mark=",",scientific=F), "lb of", input$Type, "is equivalent to driving", prettyNum(round(foodToEmissions(input$poundsOfFood, input$Type)*1000/emission.car,0),big.mark=",", scientific=F), "miles on an average vehicle")
     } else {
-      paste("The carbon footprint of", input$poundsOfFood, "lb of food waste is equivalent to driving", round(foodToEmissions(input$poundsOfFood)*1000/emission.car,2), "miles on an average vehicle")
+      paste("The carbon footprint of", prettyNum(input$poundsOfFood,big.mark=",",scientific=F), "lb of food waste is equivalent to driving", prettyNum(round(foodToEmissions(input$poundsOfFood)*1000/emission.car,0),big.mark=",", scientific=F), "miles on an average vehicle")
     }
   })
 })
