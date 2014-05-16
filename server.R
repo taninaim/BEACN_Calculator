@@ -433,14 +433,14 @@ shinyServer(function(input, output) {
   }
   
   Cost = function(poundsOfFood, type = NULL) {
-    ## Implicit Cost = The tax value from this much CO2 emissions
+    ## Social Cost of CO2 = The tax value from this much CO2 emissions
     ## Explicit Cost = Financial cost (the cost on the food that goes to waste)
     x = foodToEmissions(poundsOfFood) / 2.35 * 0.028
     averageMealSize = 1.984 #lbs
     averageCACost = 2.73/1.984 #dollars per pound 
     averageNationCost = 2.67/1.984 #dollars per pound
     print(paste(foodToEmissions(poundsOfFood, Type = type), " KgCO2e, which translates to:", collapse = " ", sep = ""))
-    print(paste("Implicit Cost (based on gasoline tax): $", x, collapse = " ", sep ="")) 
+    print(paste("Social Cost of CO2 (based on gasoline tax): $", x, collapse = " ", sep ="")) 
     print(paste("Dollar Value of Food Wasted (based on meal cost in CA): $", round(poundsOfFood * averageCACost, 0), collapse = " ", sep = ""))
     print(paste("Dollar Value of Food Wasted (based on nationwide meal cost): $", round(poundsOfFood * averageNationCost, 0), collapse = " ", sep = ""))
     print(paste("This much food used up", round(waterFootprint(poundsOfFood, Type = type),0), "liters of water in the production."))
@@ -459,11 +459,11 @@ shinyServer(function(input, output) {
 
   output$text2 = renderText ({
     if (input$Specific == TRUE){
-      print(paste("Implicit Cost (based on gasoline tax): $", prettyNum(round(foodToEmissions(input$poundsOfFood, Type = input$Type1)/ 2.35 * 0.028,0),big.mark = ",", scientific=F), collapse = " ", sep =""))  
+      print(paste("Social Cost of CO2 (based on gasoline tax): $", prettyNum(round(foodToEmissions(input$poundsOfFood, Type = input$Type1) * 0.068,0),big.mark = ",", scientific=F), collapse = " ", sep =""))  
     } else if (input$General == TRUE) {
-      print(paste("Implicit Cost (based on gasoline tax): $", prettyNum(round(foodToEmissions(input$poundsOfFood, Type = input$Type)/ 2.35 * 0.028,0),big.mark=",", scientific=F), collapse = " ", sep ="")) 
+      print(paste("Social Cost of CO2 (based on gasoline tax): $", prettyNum(round(foodToEmissions(input$poundsOfFood, Type = input$Type)* 0.068,0),big.mark=",", scientific=F), collapse = " ", sep ="")) 
     } else {
-      print(paste("Implicit Cost (based on gasoline tax): $", prettyNum(round(foodToEmissions(input$poundsOfFood, Type = "")/ 2.35 * 0.028,0),big.mark=",", scientific=F) , collapse = " ", sep =""))
+      print(paste("Social Cost of CO2 (based on gasoline tax): $", prettyNum(round(foodToEmissions(input$poundsOfFood, Type = "")* 0.068,0),big.mark=",", scientific=F) , collapse = " ", sep =""))
     } 
   })
 

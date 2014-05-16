@@ -19,8 +19,23 @@ style="float:bottom"/>','<p style="color:black"> Food Waste Calculator  </p>' ))
     checkboxInput("Specific", label = "", FALSE),
     submitButton(text = "Calculate"),
     br(),
-    p("NOTE: The calculator works with the more specific type of food. If both checkboxes are checked, it calculates the specific type. 
-      If both are unchecked, it calculates the emissions from food in general.")
+    br(),
+    h5("INFORMATION:"),
+    p("The calculator can calculate the following:"),
+    p("1. Generalized food (based on the average American diet)"),
+    p("2. General types of food (such as Meat and Poultry, Vegetables, etc.)"),
+    p("3. Even more specific type of foods (such as Beef, Tomatoes, Tofu, etc.)"),
+    p("If no boxes are checked, it will calculate generalized food."),
+    p("If both are checked if will calculate data for the Specific Types"),
+    
+    
+    h5("NOTE:"),
+    p("All food carbon emissions are reported above in Kg of CO2e, including major greenhouse gases such as methane and nitrous oxide."),
+    p("The produced data UNDERESTIMATE the negative effects of food waste."),
+    h5("For more details and sources:", a("http://tinyurl.com/mejob7y", href = "http://tinyurl.com/mejob7y")),
+    br(),
+    div("Copyright: Tanin Phongpandecha, UC Berkeley BEACN Metrics Team", style = "color:grey")
+    
   ),
   mainPanel(
     h4(textOutput("text1")),
@@ -35,7 +50,6 @@ style="float:bottom"/>','<p style="color:black"> Food Waste Calculator  </p>' ))
     br(),
     h4(textOutput("text6")),
     br(),
-    h4(textOutput("text7")),
-    p("Copyright: Tanin Phongpandecha, UC Berkeley BEACN Metrics Team", style="position: absolute; bottom: 0; right: 0; width: 500px; text-align:right; color:grey")
+    h4(textOutput("text7"))
     )
 ))
